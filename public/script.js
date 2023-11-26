@@ -58,11 +58,11 @@ const searchPerson = async () => {
 
 const getMovies = async () => {
   const selectedGenre = getSelectedGenre();
+  const rating = getRatingValue();
   const randomPage = getRandomPage();
   const discoverMovieEndpoint = "/discover/movie";
-  const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&page=${randomPage}`;
+  const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&vote_average.gte=${rating}&page=${randomPage}`;
   const urlToFetch = tmdbBaseUrl + discoverMovieEndpoint + requestParams;
-
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
@@ -77,9 +77,10 @@ const getMovies = async () => {
 
 const getMoviesWithActor = async (person) => {
   const selectedGenre = getSelectedGenre();
+  const rating = getRatingValue();
   const castChoice = getCastChoice(person);
   const discoverMovieEndpoint = "/discover/movie";
-  const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&with_cast=${castChoice}`;
+  const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&with_cast=${castChoice}&vote_average.gte=${rating}`;
   const urlToFetch = tmdbBaseUrl + discoverMovieEndpoint + requestParams;
 
   try {
