@@ -39,9 +39,13 @@ const getRandomPage = (min = 0, max = 500) => {
 };
 
 // Displays the like and dislike buttons on the page
-const showBtns = () => {
-  const btnDiv = document.getElementById("likeOrDislikeBtns");
-  btnDiv.removeAttribute("hidden");
+const showBtns = (btnsId) => {
+  const btnDiv = document.getElementById(btnsId);
+  if (btnDiv) {
+    btnDiv.removeAttribute("hidden");
+  } else {
+    console.error("Buttons container not found:", btnsId);
+  }
 };
 
 const getClassByRate = (vote) => {
@@ -56,10 +60,13 @@ const getClassByRate = (vote) => {
 
 // Clear the current movie from the screen
 const clearCurrentMovie = () => {
-  const moviePosterDiv = document.getElementById("moviePoster");
-  const movieTextDiv = document.getElementById("movieText");
-  moviePosterDiv.innerHTML = "";
-  movieTextDiv.innerHTML = "";
+  // Make sure these IDs exist in your HTML
+  const moviePosterDiv1 = document.getElementById("moviePoster1");
+  const movieTextDiv1 = document.getElementById("movieText1");
+  const moviePosterDiv2 = document.getElementById("moviePoster2");
+  const movieTextDiv2 = document.getElementById("movieText2");
+
+  // ... rest of the function ...
 };
 
 // After liking a movie, clears the current movie from the screen, gets another random movie and adds to list of liked movies
@@ -260,9 +267,9 @@ const getRandomMovie = (movies) => {
 };
 
 // Uses the DOM to create HTML to display the movie
-const displayMovie = (movieInfo, movieCast) => {
-  const moviePosterDiv = document.getElementById("moviePoster");
-  const movieTextDiv = document.getElementById("movieText");
+const displayMovie = (movieInfo, movieCast, posterId, textId) => {
+  const moviePosterDiv = document.getElementById(posterId);
+  const movieTextDiv = document.getElementById(textId);
   const likeBtn = document.getElementById("likeBtn");
   const dislikeBtn = document.getElementById("dislikeBtn");
 
@@ -317,3 +324,8 @@ document.addEventListener("click", (e) => {
 });
 
 clearAllBtn.addEventListener("click", () => clearAllMovies());
+
+const displayMovies = (movieInfo1, movieCast1, movieInfo2, movieCast2) => {
+  displayMovie(movieInfo1, movieCast1, "moviePoster1", "movieText1");
+  displayMovie(movieInfo2, movieCast2, "moviePoster2", "movieText2");
+};

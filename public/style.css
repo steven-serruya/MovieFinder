@@ -110,10 +110,10 @@ input:focus {
 }
 
 #results {
-  display: block;
+  display: flex;
 }
 
-#movieInfo {
+#movieInfo1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -121,7 +121,21 @@ input:focus {
   margin: 32px auto;
 }
 
-img#moviePoster {
+img#moviePoster1 {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+#movieInfo2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 700px;
+  margin: 32px auto;
+}
+
+img#moviePoster2 {
   width: 50%;
   height: auto;
   display: block;

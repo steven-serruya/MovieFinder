@@ -68,18 +68,28 @@
 
     <div class="container">
       <div id="results">
-        <div id="movieInfo">
-          <div id="moviePoster"></div>
-          <div id="movieText"></div>
+        <!-- Container for the first movie -->
+        <div class="movieInfo" id="movieInfo1">
+          <div class="moviePoster" id="moviePoster1"></div>
+          <div class="movieText" id="movieText1"></div>
+          <div class="likeOrDislikeBtns" id="likeOrDislikeBtns1" hidden>
+            <button class="likeBtn" id="likeBtn1"><i class="fa-solid fa-thumbs-up"></i></button>
+            <button class="dislikeBtn" id="dislikeBtn1"><i class="fa-solid fa-thumbs-down"></i></button>
+          </div>
         </div>
-        <div id="likeOrDislikeBtns" hidden>
-          <button id="likeBtn"><i class="fa-solid fa-thumbs-up"></i></button>
-          <button id="dislikeBtn">
-            <i class="fa-solid fa-thumbs-down"></i>
-          </button>
+
+        <!-- Container for the second movie -->
+        <div class="movieInfo" id="movieInfo2">
+          <div class="moviePoster" id="moviePoster2"></div>
+          <div class="movieText" id="movieText2"></div>
+          <div class="likeOrDislikeBtns" id="likeOrDislikeBtns2" hidden>
+            <button class="likeBtn" id="likeBtn2"><i class="fa-solid fa-thumbs-up"></i></button>
+            <button class="dislikeBtn" id="dislikeBtn2"><i class="fa-solid fa-thumbs-down"></i></button>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="sideBar" id="sideBar">
       <button id="closeBtn">
         <i class="fas fa-times"></i>

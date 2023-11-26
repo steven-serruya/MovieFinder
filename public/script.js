@@ -134,28 +134,37 @@ const getCast = async (movie) => {
 };
 
 // Gets a list of movies and ultimately displays the info of a random movie from the list
-const showRandomMovie = async (person) => {
-  const movieInfo = document.getElementById("movieInfo");
-  if (movieInfo.childNodes.length > 0) {
-    clearCurrentMovie();
-  }
+const showRandomMovies = async (person) => {
   let movies;
   if (person.length !== 0) {
     movies = await getMoviesWithActor(person);
   } else {
     movies = await getMovies();
   }
-  let randomMovie = getRandomMovie(movies);
-  const info = await getMovieInfo(randomMovie);
-  const cast = await getCast(randomMovie);
-  displayMovie(info, cast);
+  let randomMovie1 = getRandomMovie(movies);
+  let randomMovie2 = getRandomMovie(movies);
+  console.log(movies); // Check the content of movies array
+
+  // Ensure that the two movies are different
+  while (randomMovie1.id === randomMovie2.id) {
+    randomMovie2 = getRandomMovie(movies);
+  }
+
+  const info1 = await getMovieInfo(randomMovie1);
+  const cast1 = await getCast(randomMovie1);
+  const info2 = await getMovieInfo(randomMovie2);
+  const cast2 = await getCast(randomMovie2);
+
+  displayMovies(info1, cast1, info2, cast2); // New function to handle two movies
 };
 
 getGenres().then(populateGenreDropdown);
 
-playBtn.addEventListener("click", () => searchPerson().then(showRandomMovie));
+playBtn.addEventListener("click", () => {
+  searchPerson().then(showRandomMovies); // Instead of showRandomMovie
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  searchPerson().then(showRandomMovie);
+  searchPerson().then(showRandomMovies); // Instead of showRandomMovie
 });
