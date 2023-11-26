@@ -38,7 +38,7 @@ const getGenres = async () => {
   }
 };
 
-const searchPerson = async () => {
+export const searchPerson = async () => {
   const searchPersonEndpoint = "/search/person";
   const castInput = getCastValue();
   const requestParams = `?api_key=${tmdbKey}&query=${castInput}`;
@@ -96,6 +96,10 @@ const getMoviesWithActor = async (person) => {
 };
 
 const getMovieInfo = async (movie) => {
+  if (!movie || !movie.id) {
+    console.error("Invalid movie object", movie);
+    return; // or handle the error appropriately
+  }
   const movieId = movie.id;
   const movieEndpoint = `/movie/${movieId}`;
   const requestParams = `?api_key=${tmdbKey}`;

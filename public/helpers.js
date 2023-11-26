@@ -1,4 +1,5 @@
 // Populate dropdown menu with all the available genres
+
 const populateGenreDropdown = (genres) => {
   const select = document.getElementById("genres");
 
